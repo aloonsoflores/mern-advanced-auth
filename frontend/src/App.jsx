@@ -10,6 +10,9 @@ import ResetPasswordPage from "./pages/ResetPasswordPage";
 
 import LoadingSpinner from "./components/LoadingSpinner";
 
+import { useDarkMode } from './hooks/useDarkMode';
+import Toggle from './components/Toggle';
+
 import { Toaster } from "react-hot-toast";
 import { useAuthStore } from "./store/authStore";
 import { useEffect } from "react";
@@ -41,6 +44,7 @@ const RedirectAuthenticatedUser = ({ children }) => {
 };
 
 function App() {
+  const [theme, setTheme] = useDarkMode();
 	const { isCheckingAuth, checkAuth } = useAuthStore();
 
 	useEffect(() => {
@@ -51,12 +55,19 @@ function App() {
 
 	return (
 		<div
-			className='min-h-screen bg-gradient-to-br
-    from-gray-900 via-green-900 to-emerald-900 flex items-center justify-center relative overflow-hidden'
+			className={`min-h-screen flex items-center justify-center relative overflow-hidden
+      transition-colors duration-300
+      ${theme === 'dark'
+        ? 'bg-gradient-to-br from-gray-900 via-green-900 to-emerald-900'
+        : 'bg-gradient-to-br from-blue-100 via-blue-50 to-white'}`}
 		>
-			<FloatingShape color='bg-green-500' size='w-64 h-64' top='-5%' left='10%' delay={0} />
-			<FloatingShape color='bg-emerald-500' size='w-48 h-48' top='70%' left='80%' delay={5} />
-			<FloatingShape color='bg-lime-500' size='w-32 h-32' top='40%' left='-10%' delay={2} />
+			<div className="absolute top-4 right-4">
+        <Toggle theme={theme} setTheme={setTheme} />
+      </div>
+
+			<FloatingShape color={theme === 'dark' ? 'bg-green-500' : 'bg-green-300'} size='w-64 h-64' top='-5%' left='10%' delay={0} />
+			<FloatingShape color={theme === 'dark' ? 'bg-emerald-500' : 'bg-emerald-300'} size='w-48 h-48' top='70%' left='80%' delay={5} />
+			<FloatingShape color={theme === 'dark' ? 'bg-lime-500' : 'bg-lime-300'} size='w-32 h-32' top='40%' left='-10%' delay={2} />
 
 			<Routes>
 				<Route
