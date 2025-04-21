@@ -33,7 +33,7 @@ const SignUpPage = () => {
 			overflow-hidden'
 		>
 			<div className='p-8'>
-				<h2 className='text-3xl font-bold mb-6 text-center bg-gradient-to-r from-fuchsia-400 to-purple-500 text-transparent bg-clip-text'>
+				<h2 className='text-3xl font-bold mb-6 text-center bg-gradient-to-r from-amber-400 to-orange-500 text-transparent bg-clip-text'>
 					Crear una cuenta
 				</h2>
 
@@ -63,9 +63,9 @@ const SignUpPage = () => {
 					<PasswordStrengthMeter password={password} />
 
 					<motion.button
-						className='mt-5 w-full py-3 px-4 bg-gradient-to-r from-fuchsia-500 to-purple-600 text-white 
-						font-bold rounded-lg shadow-lg hover:from-fuchsia-600
-						hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-fuchsia-500 focus:ring-offset-2
+						className='mt-5 w-full py-3 px-4 bg-gradient-to-r from-amber-500 to-orange-600 text-white 
+						font-bold rounded-lg shadow-lg hover:from-amber-600
+						hover:to-orange-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2
 						 focus:ring-offset-gray-900 transition duration-200'
 						whileHover={{ scale: 1.02 }}
 						whileTap={{ scale: 0.98 }}
@@ -79,7 +79,7 @@ const SignUpPage = () => {
 			<div className='px-8 py-4 bg-gray-900 bg-opacity-50 flex justify-center'>
 				<p className='text-sm text-gray-400'>
 					¿Ya tienes una cuenta?{" "}
-					<Link to={"/login"} className='text-fuchsia-400 hover:underline'>
+					<Link to={"/login"} className='text-amber-400 hover:underline'>
 						Acceso
 					</Link>
 				</p>

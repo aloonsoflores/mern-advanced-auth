@@ -16,7 +16,7 @@ const DashboardPage = () => {
 			transition={{ duration: 0.5 }}
 			className='max-w-md w-full mx-auto mt-10 p-8 bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg rounded-xl shadow-2xl border border-gray-800'
 		>
-			<h2 className='text-3xl font-bold mb-6 text-center bg-gradient-to-r from-fuchsia-400 to-purple-600 text-transparent bg-clip-text'>
+			<h2 className='text-3xl font-bold mb-6 text-center bg-gradient-to-r from-amber-400 to-orange-600 text-transparent bg-clip-text'>
 				Dashboard
 			</h2>
 
@@ -27,7 +27,7 @@ const DashboardPage = () => {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.2 }}
 				>
-					<h3 className='text-xl font-semibold text-fuchsia-400 mb-3'>Información de perfil</h3>
+					<h3 className='text-xl font-semibold text-amber-400 mb-3'>Información de perfil</h3>
 					<p className='text-gray-300'>Nombre: {user.name}</p>
 					<p className='text-gray-300'>Correo electrónico: {user.email}</p>
 				</motion.div>
@@ -37,7 +37,7 @@ const DashboardPage = () => {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.4 }}
 				>
-					<h3 className='text-xl font-semibold text-fuchsia-400 mb-3'>Actividad de la cuenta</h3>
+					<h3 className='text-xl font-semibold text-amber-400 mb-3'>Actividad de la cuenta</h3>
 					<p className='text-gray-300'>
 						<span className='font-bold'>Unido: </span>
 						{new Date(user.createdAt).toLocaleDateString("es-ES", {
@@ -64,9 +64,9 @@ const DashboardPage = () => {
 					whileHover={{ scale: 1.05 }}
 					whileTap={{ scale: 0.95 }}
 					onClick={handleLogout}
-					className='w-full py-3 px-4 bg-gradient-to-r from-fuchsia-500 to-purple-600 text-white 
-				font-bold rounded-lg shadow-lg hover:from-fuchsia-600 hover:to-purple-700
-				 focus:outline-none focus:ring-2 focus:ring-fuchsia-500 focus:ring-offset-2 focus:ring-offset-gray-900'
+					className='w-full py-3 px-4 bg-gradient-to-r from-amber-500 to-orange-600 text-white 
+				font-bold rounded-lg shadow-lg hover:from-amber-600 hover:to-orange-700
+				 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:ring-offset-gray-900'
 				>
 					Cerrar sesión
 				</motion.button>

@@ -70,7 +70,7 @@ const EmailVerificationPage = () => {
 				transition={{ duration: 0.5 }}
 				className='bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-xl rounded-2xl shadow-2xl p-8 w-full max-w-md'
 			>
-				<h2 className='text-3xl font-bold mb-6 text-center bg-gradient-to-r from-fuchsia-400 to-purple-500 text-transparent bg-clip-text'>
+				<h2 className='text-3xl font-bold mb-6 text-center bg-gradient-to-r from-amber-400 to-orange-500 text-transparent bg-clip-text'>
 					Verifique su correo electrónico
 				</h2>
 				<p className='text-center text-gray-300 mb-6'>Introduzca el código de 6 dígitos enviado a su dirección de correo electrónico.</p>
@@ -86,7 +86,7 @@ const EmailVerificationPage = () => {
 								value={digit}
 								onChange={(e) => handleChange(index, e.target.value)}
 								onKeyDown={(e) => handleKeyDown(index, e)}
-								className='w-12 h-12 text-center text-2xl font-bold bg-gray-700 text-white border-2 border-gray-600 rounded-lg focus:border-fuchsia-500 focus:outline-none'
+								className='w-12 h-12 text-center text-2xl font-bold bg-gray-700 text-white border-2 border-gray-600 rounded-lg focus:border-amber-500 focus:outline-none'
 							/>
 						))}
 					</div>
@@ -96,7 +96,7 @@ const EmailVerificationPage = () => {
 						whileTap={{ scale: 0.95 }}
 						type='submit'
 						disabled={isLoading || code.some((digit) => !digit)}
-						className='w-full bg-gradient-to-r from-fuchsia-500 to-purple-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:from-fuchsia-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-fuchsia-500 focus:ring-opacity-50 disabled:opacity-50'
+						className='w-full bg-gradient-to-r from-amber-500 to-orange-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:from-amber-600 hover:to-orange-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-opacity-50 disabled:opacity-50'
 					>
 						{isLoading ? "Verificando..." : "Verificar correo electrónico"}
 					</motion.button>
