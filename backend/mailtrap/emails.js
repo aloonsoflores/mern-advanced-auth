@@ -12,16 +12,16 @@ export const sendVerificationEmail = async (email, verificationToken) => {
 		const response = await mailtrapClient.send({
 			from: sender,
 			to: recipient,
-			subject: "Verify your email",
+			subject: "Verifica tu correo electrónico",
 			html: VERIFICATION_EMAIL_TEMPLATE.replace("{verificationCode}", verificationToken),
 			category: "Email Verification",
 		});
 
-		console.log("Email sent successfully", response);
+		console.log("Correo electrónico enviado correctamente", response);
 	} catch (error) {
-		console.error(`Error sending verification`, error);
+		console.error(`Error al enviar la verificación`, error);
 
-		throw new Error(`Error sending verification email: ${error}`);
+		throw new Error(`Error al enviar el correo electrónico de verificación: ${error}`);
 	}
 };
 
@@ -39,11 +39,11 @@ export const sendWelcomeEmail = async (email, name) => {
 			},
 		});
 
-		console.log("Welcome email sent successfully", response);
+		console.log("Correo electrónico de bienvenida enviado correctamente", response);
 	} catch (error) {
-		console.error(`Error sending welcome email`, error);
+		console.error(`Error al enviar el correo electrónico de bienvenida`, error);
 
-		throw new Error(`Error sending welcome email: ${error}`);
+		throw new Error(`Error al enviar el correo electrónico de bienvenida: ${error}`);
 	}
 };
 
@@ -54,14 +54,14 @@ export const sendPasswordResetEmail = async (email, resetURL) => {
 		const response = await mailtrapClient.send({
 			from: sender,
 			to: recipient,
-			subject: "Reset your password",
+			subject: "Restablece tu contraseña",
 			html: PASSWORD_RESET_REQUEST_TEMPLATE.replace("{resetURL}", resetURL),
 			category: "Password Reset",
 		});
 	} catch (error) {
-		console.error(`Error sending password reset email`, error);
+		console.error(`Error al enviar el correo electrónico de restablecimiento de contraseña`, error);
 
-		throw new Error(`Error sending password reset email: ${error}`);
+		throw new Error(`Error al enviar el correo electrónico de restablecimiento de contraseña: ${error}`);
 	}
 };
 
@@ -72,15 +72,15 @@ export const sendResetSuccessEmail = async (email) => {
 		const response = await mailtrapClient.send({
 			from: sender,
 			to: recipient,
-			subject: "Password Reset Successful",
+			subject: "Restablecimiento de contraseña exitoso",
 			html: PASSWORD_RESET_SUCCESS_TEMPLATE,
 			category: "Password Reset",
 		});
 
-		console.log("Password reset email sent successfully", response);
+		console.log("Correo electrónico de restablecimiento de contraseña enviado correctamente", response);
 	} catch (error) {
-		console.error(`Error sending password reset success email`, error);
+		console.error(`Error al enviar correo electrónico de restablecimiento de contraseña`, error);
 
-		throw new Error(`Error sending password reset success email: ${error}`);
+		throw new Error(`Error al enviar correo electrónico de restablecimiento de contraseña: ${error}`);
 	}
 };

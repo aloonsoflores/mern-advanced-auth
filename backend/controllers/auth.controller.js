@@ -15,14 +15,14 @@ export const signup = async (req, res) => {
 
 	try {
 		if (!email || !password || !name) {
-			throw new Error("All fields are required");
+			throw new Error("Todos los campos son obligatorios");
 		}
 
 		const userAlreadyExists = await User.findOne({ email });
 		console.log("userAlreadyExists", userAlreadyExists);
 
 		if (userAlreadyExists) {
-			return res.status(400).json({ success: false, message: "User already exists" });
+			return res.status(400).json({ success: false, message: "El usuario ya existe" });
 		}
 
 		const hashedPassword = await bcryptjs.hash(password, 10);
@@ -45,7 +45,7 @@ export const signup = async (req, res) => {
 
 		res.status(201).json({
 			success: true,
-			message: "User created successfully",
+			message: "Usuario creado con éxito",
 			user: {
 				...user._doc,
 				password: undefined,
@@ -65,7 +65,7 @@ export const verifyEmail = async (req, res) => {
 		});
 
 		if (!user) {
-			return res.status(400).json({ success: false, message: "Invalid or expired verification code" });
+			return res.status(400).json({ success: false, message: "Código de verificación inválido o vencido" });
 		}
 
 		user.isVerified = true;
@@ -77,15 +77,15 @@ export const verifyEmail = async (req, res) => {
 
 		res.status(200).json({
 			success: true,
-			message: "Email verified successfully",
+			message: "Correo electrónico verificado exitosamente",
 			user: {
 				...user._doc,
 				password: undefined,
 			},
 		});
 	} catch (error) {
-		console.log("error in verifyEmail ", error);
-		res.status(500).json({ success: false, message: "Server error" });
+		console.log("Error al verificar correo electrónico ", error);
+		res.status(500).json({ success: false, message: "Error del servidor" });
 	}
 };
 
@@ -94,11 +94,11 @@ export const login = async (req, res) => {
 	try {
 		const user = await User.findOne({ email });
 		if (!user) {
-			return res.status(400).json({ success: false, message: "Invalid credentials" });
+			return res.status(400).json({ success: false, message: "Credenciales no válidas" });
 		}
 		const isPasswordValid = await bcryptjs.compare(password, user.password);
 		if (!isPasswordValid) {
-			return res.status(400).json({ success: false, message: "Invalid credentials" });
+			return res.status(400).json({ success: false, message: "Credenciales no válidas" });
 		}
 
 		generateTokenAndSetCookie(res, user._id);
@@ -108,21 +108,21 @@ export const login = async (req, res) => {
 
 		res.status(200).json({
 			success: true,
-			message: "Logged in successfully",
+			message: "Inicie sesión exitosamente",
 			user: {
 				...user._doc,
 				password: undefined,
 			},
 		});
 	} catch (error) {
-		console.log("Error in login ", error);
+		console.log("Error al iniciar sesión ", error);
 		res.status(400).json({ success: false, message: error.message });
 	}
 };
 
 export const logout = async (req, res) => {
 	res.clearCookie("token");
-	res.status(200).json({ success: true, message: "Logged out successfully" });
+	res.status(200).json({ success: true, message: "Cerró sesión exitosamente" });
 };
 
 export const forgotPassword = async (req, res) => {
@@ -131,7 +131,7 @@ export const forgotPassword = async (req, res) => {
 		const user = await User.findOne({ email });
 
 		if (!user) {
-			return res.status(400).json({ success: false, message: "User not found" });
+			return res.status(400).json({ success: false, message: "Usuario no encontrado" });
 		}
 
 		// Generate reset token
@@ -146,9 +146,9 @@ export const forgotPassword = async (req, res) => {
 		// send email
 		await sendPasswordResetEmail(user.email, `${process.env.CLIENT_URL}/reset-password/${resetToken}`);
 
-		res.status(200).json({ success: true, message: "Password reset link sent to your email" });
+		res.status(200).json({ success: true, message: "Enlace de restablecimiento de contraseña enviado a su correo electrónico" });
 	} catch (error) {
-		console.log("Error in forgotPassword ", error);
+		console.log("Error al olvidar la contraseña ", error);
 		res.status(400).json({ success: false, message: error.message });
 	}
 };
@@ -164,7 +164,7 @@ export const resetPassword = async (req, res) => {
 		});
 
 		if (!user) {
-			return res.status(400).json({ success: false, message: "Invalid or expired reset token" });
+			return res.status(400).json({ success: false, message: "Token de reinicio no válido o vencido" });
 		}
 
 		// update password
@@ -177,9 +177,9 @@ export const resetPassword = async (req, res) => {
 
 		await sendResetSuccessEmail(user.email);
 
-		res.status(200).json({ success: true, message: "Password reset successful" });
+		res.status(200).json({ success: true, message: "Restablecimiento de contraseña exitoso" });
 	} catch (error) {
-		console.log("Error in resetPassword ", error);
+		console.log("Error al restablecer la contraseña ", error);
 		res.status(400).json({ success: false, message: error.message });
 	}
 };
@@ -188,12 +188,12 @@ export const checkAuth = async (req, res) => {
 	try {
 		const user = await User.findById(req.userId).select("-password");
 		if (!user) {
-			return res.status(400).json({ success: false, message: "User not found" });
+			return res.status(400).json({ success: false, message: "Usuario no encontrado" });
 		}
 
 		res.status(200).json({ success: true, user });
 	} catch (error) {
-		console.log("Error in checkAuth ", error);
+		console.log("Error en checkAuth ", error);
 		res.status(400).json({ success: false, message: error.message });
 	}
 };
