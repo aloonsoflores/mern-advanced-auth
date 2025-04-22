@@ -14,31 +14,31 @@ const DashboardPage = () => {
 			animate={{ opacity: 1, scale: 1 }}
 			exit={{ opacity: 0, scale: 0.9 }}
 			transition={{ duration: 0.5 }}
-			className='max-w-md w-full mx-auto mt-10 p-8 bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg rounded-xl shadow-2xl border border-gray-800'
+			className='max-w-md w-full mx-auto mt-10 p-8 bg-gray-50 dark:bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg rounded-xl shadow-2xl border border-gray-200 dark:border-gray-800'
 		>
-			<h2 className='text-3xl font-bold mb-6 text-center bg-gradient-to-r from-amber-400 to-orange-600 text-transparent bg-clip-text'>
+			<h2 className='text-3xl font-bold mb-6 text-center bg-gradient-to-r from-amber-200 to-orange-300 dark:from-amber-400 dark:to-orange-500 text-transparent bg-clip-text'>
 				Dashboard
 			</h2>
 
 			<div className='space-y-6'>
 				<motion.div
-					className='p-4 bg-gray-800 bg-opacity-50 rounded-lg border border-gray-700'
+					className='p-4 bg-gray-200 dark:bg-gray-800 bg-opacity-50 rounded-lg border border-gray-300 dark:border-gray-700'
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.2 }}
 				>
-					<h3 className='text-xl font-semibold text-amber-400 mb-3'>Información de perfil</h3>
-					<p className='text-gray-300'>Nombre: {user.name}</p>
-					<p className='text-gray-300'>Correo electrónico: {user.email}</p>
+					<h3 className='text-xl font-semibold text-amber-600 dark:text-amber-400 mb-3'>Información de perfil</h3>
+					<p className='text-gray-700 dark:text-gray-300'>Nombre: {user.name}</p>
+					<p className='text-gray-700 dark:text-gray-300'>Correo electrónico: {user.email}</p>
 				</motion.div>
 				<motion.div
-					className='p-4 bg-gray-800 bg-opacity-50 rounded-lg border border-gray-700'
+					className='p-4 bg-gray-200 dark:bg-gray-800 bg-opacity-50 rounded-lg border border-gray-300 dark:border-gray-700'
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.4 }}
 				>
-					<h3 className='text-xl font-semibold text-amber-400 mb-3'>Actividad de la cuenta</h3>
-					<p className='text-gray-300'>
+					<h3 className='text-xl font-semibold text-amber-600 dark:text-amber-400 mb-3'>Actividad de la cuenta</h3>
+					<p className='text-gray-700 dark:text-gray-300'>
 						<span className='font-bold'>Unido: </span>
 						{new Date(user.createdAt).toLocaleDateString("es-ES", {
 							year: "numeric",
@@ -46,7 +46,7 @@ const DashboardPage = () => {
 							day: "numeric",
 						})}
 					</p>
-					<p className='text-gray-300'>
+					<p className='text-gray-700 dark:text-gray-300'>
 						<span className='font-bold'>Último inicio de sesión: </span>
 
 						{formatDate(user.lastLogin)}
@@ -64,9 +64,9 @@ const DashboardPage = () => {
 					whileHover={{ scale: 1.05 }}
 					whileTap={{ scale: 0.95 }}
 					onClick={handleLogout}
-					className='w-full py-3 px-4 bg-gradient-to-r from-amber-500 to-orange-600 text-white 
-				font-bold rounded-lg shadow-lg hover:from-amber-600 hover:to-orange-700
-				 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:ring-offset-gray-900'
+					className='w-full py-3 px-4 bg-gradient-to-r from-amber-300 to-orange-400 text-gray-900 dark:from-amber-500 dark:to-orange-600 dark:text-white 
+				font-bold rounded-lg shadow-lg hover:from-amber-400 hover:to-orange-500 dark:hover:from-amber-600 dark:hover:to-orange-700
+				 focus:outline-none focus:ring-2 focus:ring-amber-300  dark:focus:ring-amber-500 focus:ring-offset-2 focus:ring-offset-gray-100 dark:focus:ring-offset-gray-900 focus:ring-opacity-50 disabled:opacity-50 transition duration-200'
 				>
 					Cerrar sesión
 				</motion.button>

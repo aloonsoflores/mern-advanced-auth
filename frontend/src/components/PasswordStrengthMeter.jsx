@@ -41,7 +41,7 @@ const PasswordStrengthMeter = ({ password }) => {
 		if (strength === 1) return "bg-red-400";
 		if (strength === 2) return "bg-yellow-500";
 		if (strength === 3) return "bg-yellow-400";
-		return "bg-amber-500";
+		return "bg-green-500";
 	};
 
 	const getStrengthText = (strength) => {
@@ -55,8 +55,8 @@ const PasswordStrengthMeter = ({ password }) => {
 	return (
 		<div className='mt-2'>
 			<div className='flex justify-between items-center mb-1'>
-				<span className='text-xs text-gray-400'>Fuerza de la contraseña</span>
-				<span className='text-xs text-gray-400'>{getStrengthText(strength)}</span>
+				<span className='text-xs text-gray-600 dark:text-gray-400'>Fuerza de la contraseña</span>
+				<span className='text-xs text-gray-600 dark:text-gray-400'>{getStrengthText(strength)}</span>
 			</div>
 
 			<div className='flex space-x-1'>
@@ -64,7 +64,7 @@ const PasswordStrengthMeter = ({ password }) => {
 					<div
 						key={index}
 						className={`h-1 w-1/4 rounded-full transition-colors duration-300 
-                ${index < strength ? getColor(strength) : "bg-gray-600"}
+                ${index < strength ? getColor(strength) : "bg-gray-400 dark:bg-gray-600"}
               `}
 					/>
 				))}

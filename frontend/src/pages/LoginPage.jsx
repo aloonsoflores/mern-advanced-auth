@@ -21,10 +21,10 @@ const LoginPage = () => {
 			initial={{ opacity: 0, y: 20 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.5 }}
-			className='max-w-md w-full bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden'
+			className='max-w-md w-full bg-gray-200 dark:bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-xl rounded-2xl shadow-xl overflow-hidden'
 		>
 			<div className='p-8'>
-				<h2 className='text-3xl font-bold mb-6 text-center bg-gradient-to-r from-amber-400 to-orange-500 text-transparent bg-clip-text'>
+				<h2 className='text-3xl font-bold mb-6 text-center bg-gradient-to-r from-amber-200 to-orange-300 dark:from-amber-400 dark:to-orange-500 text-transparent bg-clip-text'>
 					Bienvenido de nuevo
 				</h2>
 
@@ -46,7 +46,7 @@ const LoginPage = () => {
 					/>
 
 					<div className='flex items-center mb-6'>
-						<Link to='/forgot-password' className='text-sm text-amber-400 hover:underline'>
+						<Link to='/forgot-password' className='text-sm text-amber-600 dark:text-amber-400 hover:underline'>
 							¿Has olvidado tu contraseña?
 						</Link>
 					</div>
@@ -55,7 +55,7 @@ const LoginPage = () => {
 					<motion.button
 						whileHover={{ scale: 1.02 }}
 						whileTap={{ scale: 0.98 }}
-						className='w-full py-3 px-4 bg-gradient-to-r from-amber-500 to-orange-600 text-white font-bold rounded-lg shadow-lg hover:from-amber-600 hover:to-orange-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-200'
+						className='w-full py-3 px-4 bg-gradient-to-r from-amber-300 to-orange-400 text-gray-900 dark:from-amber-500 dark:to-orange-600 dark:text-white font-bold rounded-lg shadow-lg hover:from-amber-400 hover:to-orange-500 dark:hover:from-amber-600 dark:hover:to-orange-700 focus:outline-none focus:ring-2 focus:ring-amber-300  dark:focus:ring-amber-500 focus:ring-offset-2 focus:ring-offset-gray-100 dark:focus:ring-offset-gray-900 focus:ring-opacity-50 disabled:opacity-50 transition duration-200'
 						type='submit'
 						disabled={isLoading}
 					>
@@ -63,10 +63,10 @@ const LoginPage = () => {
 					</motion.button>
 				</form>
 			</div>
-			<div className='px-8 py-4 bg-gray-900 bg-opacity-50 flex justify-center'>
-				<p className='text-sm text-gray-400'>
+			<div className='px-8 py-4 bg-gray-50 dark:bg-gray-900 bg-opacity-50 flex justify-center'>
+				<p className='text-sm text-gray-600 dark:text-gray-400'>
 					¿No tienes una cuenta?{" "}
-					<Link to='/signup' className='text-amber-400 hover:underline'>
+					<Link to='/signup' className='text-amber-600 dark:text-amber-400 hover:underline'>
 						Inscribirse
 					</Link>
 				</p>
