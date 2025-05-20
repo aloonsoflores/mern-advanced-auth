@@ -56,15 +56,15 @@ function App() {
 	return (
 		<div
 			className='min-h-screen bg-gradient-to-br
-    from-gray-900 via-amber-900 to-orange-900 flex items-center justify-center relative overflow-hidden'
+			from-gray-200 via-amber-200 to-orange-200 dark:from-gray-900 dark:via-amber-900 dark:to-orange-900 flex items-center justify-center relative overflow-hidden'
 		>
 			<div className="absolute top-4 right-4">
         <Toggle theme={theme} setTheme={setTheme} />
       </div>
 
-			<FloatingShape color='bg-amber-500' size='w-64 h-64' top='-5%' left='10%' delay={0} />
-			<FloatingShape color='bg-orange-500' size='w-48 h-48' top='70%' left='80%' delay={5} />
-			<FloatingShape color='bg-yellow-500' size='w-32 h-32' top='40%' left='-10%' delay={2} />
+			<FloatingShape color='bg-amber-300 dark:bg-amber-500' size='w-64 h-64' top='-5%' left='10%' delay={0} />
+			<FloatingShape color='bg-orange-300 dark:bg-orange-500' size='w-48 h-48' top='70%' left='80%' delay={5} />
+			<FloatingShape color='bg-yellow-300 dark:bg-yellow-500' size='w-32 h-32' top='40%' left='-10%' delay={2} />
 
 			<Routes>
 				<Route

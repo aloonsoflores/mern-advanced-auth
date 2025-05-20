@@ -5,7 +5,7 @@ import {
 } from "./emailTemplates.js";
 import { mailtrapClient, sender } from "./mailtrap.config.js";
 
-export const sendVerificationEmail = async (email, verificationToken) => {
+export const sendVerificationEmail = async (email, verificationToken, userEmail) => {
 	const recipient = [{ email }];
 
 	try {
@@ -13,7 +13,7 @@ export const sendVerificationEmail = async (email, verificationToken) => {
 			from: sender,
 			to: recipient,
 			subject: "Verifica tu correo electrónico",
-			html: VERIFICATION_EMAIL_TEMPLATE.replace("{verificationCode}", verificationToken),
+			html: VERIFICATION_EMAIL_TEMPLATE.replace("{verificationCode}", verificationToken).replace("{userEmail}", userEmail),
 			category: "Email Verification",
 		});
 
@@ -47,7 +47,7 @@ export const sendWelcomeEmail = async (email, name) => {
 	}
 };
 
-export const sendPasswordResetEmail = async (email, resetURL) => {
+export const sendPasswordResetEmail = async (email, resetURL, userEmail, fechaHora) => {
 	const recipient = [{ email }];
 
 	try {
@@ -55,9 +55,11 @@ export const sendPasswordResetEmail = async (email, resetURL) => {
 			from: sender,
 			to: recipient,
 			subject: "Restablece tu contraseña",
-			html: PASSWORD_RESET_REQUEST_TEMPLATE.replace("{resetURL}", resetURL),
+			html: PASSWORD_RESET_REQUEST_TEMPLATE.replace(/\{resetURL\}/g, resetURL).replace("{fechaHora}", fechaHora).replace("{userEmail}", userEmail),
 			category: "Password Reset",
 		});
+
+		console.log("Correo electrónico de restablecimiento de contraseña enviado correctamente", response);
 	} catch (error) {
 		console.error(`Error al enviar el correo electrónico de restablecimiento de contraseña`, error);
 
@@ -65,7 +67,7 @@ export const sendPasswordResetEmail = async (email, resetURL) => {
 	}
 };
 
-export const sendResetSuccessEmail = async (email) => {
+export const sendResetSuccessEmail = async (email, userEmail, fechaHora, loginLink) => {
 	const recipient = [{ email }];
 
 	try {
@@ -73,7 +75,10 @@ export const sendResetSuccessEmail = async (email) => {
 			from: sender,
 			to: recipient,
 			subject: "Restablecimiento de contraseña exitoso",
-			html: PASSWORD_RESET_SUCCESS_TEMPLATE,
+			html: PASSWORD_RESET_SUCCESS_TEMPLATE
+				.replace("{userEmail}", userEmail)
+				.replace("{fechaHora}", fechaHora)
+				.replace("{loginLink}", loginLink),
 			category: "Password Reset",
 		});
 

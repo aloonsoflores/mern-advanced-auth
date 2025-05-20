@@ -16,7 +16,7 @@ const DashboardPage = () => {
 			transition={{ duration: 0.5 }}
 			className='max-w-md w-full mx-auto mt-10 p-8 bg-gray-50 dark:bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg rounded-xl shadow-2xl border border-gray-200 dark:border-gray-800'
 		>
-			<h2 className='text-3xl font-bold mb-6 text-center bg-gradient-to-r from-amber-200 to-orange-300 dark:from-amber-400 dark:to-orange-500 text-transparent bg-clip-text'>
+			<h2 className='text-3xl font-bold mb-6 text-center bg-gradient-to-r from-amber-400 to-orange-500 text-transparent bg-clip-text'>
 				Dashboard
 			</h2>
 
@@ -28,8 +28,14 @@ const DashboardPage = () => {
 					transition={{ delay: 0.2 }}
 				>
 					<h3 className='text-xl font-semibold text-amber-600 dark:text-amber-400 mb-3'>Información de perfil</h3>
-					<p className='text-gray-700 dark:text-gray-300'>Nombre: {user.name}</p>
-					<p className='text-gray-700 dark:text-gray-300'>Correo electrónico: {user.email}</p>
+					<p className='text-gray-700 dark:text-gray-300'>
+						<span className='font-bold'>Nombre: </span>
+						{user.name}
+					</p>
+					<p className='text-gray-700 dark:text-gray-300'>
+						<span className='font-bold'>Correo electrónico: </span>
+						{user.email}
+					</p>
 				</motion.div>
 				<motion.div
 					className='p-4 bg-gray-200 dark:bg-gray-800 bg-opacity-50 rounded-lg border border-gray-300 dark:border-gray-700'
@@ -48,7 +54,6 @@ const DashboardPage = () => {
 					</p>
 					<p className='text-gray-700 dark:text-gray-300'>
 						<span className='font-bold'>Último inicio de sesión: </span>
-
 						{formatDate(user.lastLogin)}
 					</p>
 				</motion.div>
@@ -64,9 +69,15 @@ const DashboardPage = () => {
 					whileHover={{ scale: 1.05 }}
 					whileTap={{ scale: 0.95 }}
 					onClick={handleLogout}
-					className='w-full py-3 px-4 bg-gradient-to-r from-amber-300 to-orange-400 text-gray-900 dark:from-amber-500 dark:to-orange-600 dark:text-white 
-				font-bold rounded-lg shadow-lg hover:from-amber-400 hover:to-orange-500 dark:hover:from-amber-600 dark:hover:to-orange-700
-				 focus:outline-none focus:ring-2 focus:ring-amber-300  dark:focus:ring-amber-500 focus:ring-offset-2 focus:ring-offset-gray-100 dark:focus:ring-offset-gray-900 focus:ring-opacity-50 disabled:opacity-50 transition duration-200'
+					className='w-full py-3 px-4 
+					bg-gradient-to-r from-amber-300 to-orange-400 text-gray-900 dark:from-amber-500 dark:to-orange-600 dark:text-white 
+					font-bold rounded-lg shadow-lg 
+					enabled:hover:from-amber-400 enabled:hover:to-orange-500 enabled:dark:hover:from-amber-600 enabled:dark:hover:to-orange-700 
+					enabled:focus:outline-none enabled:focus:ring-2 enabled:focus:ring-amber-300 enabled:dark:focus:ring-amber-500 
+					enabled:focus:ring-offset-2 enabled:focus:ring-offset-gray-100 enabled:dark:focus:ring-offset-gray-900 
+					focus:ring-opacity-50 
+					disabled:opacity-50 disabled:cursor-not-allowed
+					transition duration-200'
 				>
 					Cerrar sesión
 				</motion.button>

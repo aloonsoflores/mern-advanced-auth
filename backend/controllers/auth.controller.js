@@ -41,7 +41,7 @@ export const signup = async (req, res) => {
 		// jwt
 		generateTokenAndSetCookie(res, user._id);
 
-		await sendVerificationEmail(user.email, verificationToken);
+		await sendVerificationEmail(user.email, verificationToken, user.email);
 
 		res.status(201).json({
 			success: true,
@@ -143,8 +143,17 @@ export const forgotPassword = async (req, res) => {
 
 		await user.save();
 
+		// Generar fecha formateada
+		const fechaHora = new Date();
+		const formattedDate = 
+			`${(fechaHora.getMonth() + 1).toString().padStart(2, '0')}/` +  // Mes
+			`${fechaHora.getDate().toString().padStart(2, '0')}/` +          // Día
+			`${fechaHora.getFullYear()} ` +                                  // Año
+			`${fechaHora.getHours().toString().padStart(2, '0')}:` +         // Horas
+			`${fechaHora.getMinutes().toString().padStart(2, '0')}`;         // Minutos
+
 		// send email
-		await sendPasswordResetEmail(user.email, `${process.env.CLIENT_URL}/reset-password/${resetToken}`);
+		await sendPasswordResetEmail(user.email, `${process.env.CLIENT_URL}/reset-password/${resetToken}`, user.email, formattedDate);
 
 		res.status(200).json({ success: true, message: "Enlace de restablecimiento de contraseña enviado a su correo electrónico" });
 	} catch (error) {
